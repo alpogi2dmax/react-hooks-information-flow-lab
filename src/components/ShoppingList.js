@@ -8,6 +8,7 @@ function ShoppingList({ items }) {
   function handleCategoryChange(event) {
     console.log(event.target.value)
     setSelectedCategory(event.target.value);
+    console.log("Category changed to:", event.target.value);
   }
 
   const itemsToDisplay = items.filter((item) => {
@@ -19,7 +20,7 @@ function ShoppingList({ items }) {
 
   return (
     <div className="ShoppingList">
-      <Filter onHandleCategoryChange={handleCategoryChange}/>
+      <Filter selectedCategory={selectedCategory} onCategoryChange={handleCategoryChange}/>
       <ul className="Items">
         {itemsToDisplay.map((item) => (
           <Item key={item.id} name={item.name} category={item.category} />
